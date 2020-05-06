@@ -55,6 +55,9 @@ def thename(youtube):
         playlistId="PLf1rT1a14dFyd59AMexc6DcEAkgincO3U"
     )
     response = request.execute()
+    for item in response["items"]:
+        title = item["snippet"]["title"]
+        uri = "https://www.youtube.com/watch?v={}".format(item["id"])
     print(response)
 
 googlecrs()
