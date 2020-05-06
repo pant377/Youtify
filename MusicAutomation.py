@@ -1,13 +1,12 @@
 import os
 import spotipy
 import requests
-import json
 import spotipy.util as util
-from secret import *
 import google_auth_oauthlib.flow
 import googleapiclient.discovery
 import googleapiclient.errors
 import youtube_dl
+from secret import *
 scopes = ["https://www.googleapis.com/auth/youtube.readonly"]
 
 def addtoplaylist(song,artist):
@@ -58,6 +57,5 @@ def thename(youtube):
     for item in response["items"]:
         title = item["snippet"]["title"]
         uri = "https://www.youtube.com/watch?v={}".format(item["id"])
-    print(response)
-
+                
 googlecrs()
