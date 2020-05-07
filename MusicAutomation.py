@@ -57,9 +57,11 @@ def thename(youtube):
     for item in response["items"]:
         title = item["snippet"]["title"]
         uri = "https://www.youtube.com/watch?v={}".format(item["id"])
-        trackyt = youtube_dl.YoutubeDL({}).extract_info(uri, download=False)
-        t_name = trackyt["track"]
-        t_artist = trackyt["artist"]
-        print(title,"",t_name,"  ",t_artist)
+        #trackyt = youtube_dl.YoutubeDL({}).extract_info(uri, download=False)
+        #t_name = trackyt["track"]
+        #t_artist = trackyt["artist"]
+        print(title,"  ",uri,"  ")
                 
 googlecrs()
+
+# tin epomeni ase to ytapi canto me manipulation
