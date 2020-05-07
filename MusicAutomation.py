@@ -42,7 +42,7 @@ def googlecrs():
     os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
     api_service_name = "youtube"
     api_version = "v3"
-    client_secrets_file = "C:/Users/pantelis/Desktop/WebscrapingProject/secret.json"
+    client_secrets_file = "C:/Users/pantelis/Desktop/Spotify_Project/secret.json"
     flow = google_auth_oauthlib.flow.InstalledAppFlow.from_client_secrets_file(client_secrets_file, scopes)
     credentials = flow.run_console()
     youtube = googleapiclient.discovery.build(api_service_name, api_version, credentials=credentials)
@@ -57,5 +57,9 @@ def thename(youtube):
     for item in response["items"]:
         title = item["snippet"]["title"]
         uri = "https://www.youtube.com/watch?v={}".format(item["id"])
+        trackyt = youtube_dl.YoutubeDL({}).extract_info(uri,download=False)
+        t_name = trackyt["track"]
+        t_artist = trackyt["artist"]
+        print(title,"  ",uri)
                 
 googlecrs()
