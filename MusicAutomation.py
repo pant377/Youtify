@@ -47,18 +47,22 @@ def googlecrs():
     flow = google_auth_oauthlib.flow.InstalledAppFlow.from_client_secrets_file(client_secrets_file, scopes)
     credentials = flow.run_console()
     youtube = googleapiclient.discovery.build(api_service_name, api_version, credentials=credentials)
-    thename(youtube) 
+    saa = thename(youtube) 
+    return saa
 
 def thename(youtube):
+    ftitle = []
     request = youtube.playlistItems().list(
         part="snippet,contentDetails",
-        playlistId="PLf1rT1a14dFyd59AMexc6DcEAkgincO3U"
-    )
+        playlistId="PLf1rT1a14dFyd59AMexc6DcEAkgincO3U")
     response = request.execute()
     for item in response["items"]:
         title = (item["snippet"]["title"]).replace(' [Official Video]','').replace(' [OFFICIAL VIDEO]','')
-        ftitle = re.split('-',title)
-        print(ftitle,"  ","  ")
+        ftitle.append(re.split('-',title)) 
+    return ftitle
      
-googlecrs()
-# tin epomeni ase to ytapi canto me manipulation
+if __name__ == "__main__":
+    saa = googlecrs()
+    for i in saa:
+        artist = i[0]    
+        song = i[1]
