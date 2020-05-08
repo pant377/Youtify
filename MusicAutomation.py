@@ -8,6 +8,7 @@ import googleapiclient.discovery
 import googleapiclient.errors
 import youtube_dl
 from secret import *
+
 scopes = ["https://www.googleapis.com/auth/youtube.readonly"] #https://www.googleapis.com/auth/analytics.readonly
 
 def addtoplaylist(song,artist):
