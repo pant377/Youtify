@@ -1,4 +1,5 @@
 import os
+import re
 import spotipy
 import requests
 import spotipy.util as util
@@ -7,7 +8,7 @@ import googleapiclient.discovery
 import googleapiclient.errors
 import youtube_dl
 from secret import *
-scopes = ["https://www.googleapis.com/auth/youtube.readonly"]
+scopes = ["https://www.googleapis.com/auth/youtube.readonly"] #https://www.googleapis.com/auth/analytics.readonly
 
 def addtoplaylist(song,artist):
     scope = 'playlist-modify-public'
@@ -55,13 +56,9 @@ def thename(youtube):
     )
     response = request.execute()
     for item in response["items"]:
-        title = item["snippet"]["title"]
-        uri = "https://www.youtube.com/watch?v={}".format(item["id"])
-        #trackyt = youtube_dl.YoutubeDL({}).extract_info(uri, download=False)
-        #t_name = trackyt["track"]
-        #t_artist = trackyt["artist"]
-        print(title,"  ",uri,"  ")
-                
+        title = (item["snippet"]["title"]).replace(' [Official Video]','').replace(' [OFFICIAL VIDEO]','')
+        ftitle = re.split('-',title)
+        print(ftitle,"  ","  ")
+     
 googlecrs()
-
 # tin epomeni ase to ytapi canto me manipulation
