@@ -20,7 +20,7 @@ def addtoplaylist(song,artist):
         try:
             sp = spotipy.Spotify(auth=token)
             sp.user_playlist_add_tracks(username,"5g5bvBT483nKC4NKR3wG2m",tracks)
-            print("Done..")
+            print("Spotify add done...")
         except:
             print("Not Done Sorry ..")    
 
@@ -66,3 +66,4 @@ if __name__ == "__main__":
     for i in saa:
         artist = i[0]    
         song = i[1]
+        addtoplaylist(song,artist)
